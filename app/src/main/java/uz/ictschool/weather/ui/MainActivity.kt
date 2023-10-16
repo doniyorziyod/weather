@@ -50,6 +50,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.swipe.setOnRefreshListener {
             binding.swipe.isRefreshing = false
+            val parsedDate = LocalDateTime.parse(LocalDateTime.now().toString(), DateTimeFormatter.ISO_DATE_TIME)
+            val formattedDate = parsedDate.format(DateTimeFormatter.ISO_DATE)
+
+            binding.currentDate.text = formattedDate
             getAPI()
         }
     }
